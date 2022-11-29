@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('new/', views.image_upload_view, name='product_new'),
     path('', views.ProductListView, name='product_list'),
+    path('<int:pk>/edit/', views.ProductUpdateView.as_view(), name='product_edit'),
 ]
 
 if settings.DEBUG:

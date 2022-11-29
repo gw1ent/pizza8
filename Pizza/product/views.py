@@ -9,32 +9,42 @@ import random
 
 def ProductListView(request):
     products = models.Product.objects.all()
-    random_f = random.randint(1, len(models.Product.objects.all()))
-    random_s = random.randint(1, len(models.Product.objects.all()))
-    while True:
-        if random_s != random_f:
-            break
-        else:
-            random_s = random.randint(1, len(models.Product.objects.all()))
-    random_t = random.randint(1, len(models.Product.objects.all()))
-    while True:
-        if random_t != random_f and random_t != random_s:
-            break
-        else:
-            random_t = random.randint(1, len(models.Product.objects.all()))
-    return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t})
+    if len(products) != 0:
+        random_f = random.randint(1, len(models.Product.objects.all()))
+        random_s = random.randint(1, len(models.Product.objects.all()))
+        while True:
+            if random_s != random_f:
+                break
+            else:
+                random_s = random.randint(1, len(models.Product.objects.all()))
+        random_t = random.randint(1, len(models.Product.objects.all()))
+        while True:
+            if random_t != random_f and random_t != random_s:
+                break
+            else:
+                random_t = random.randint(1, len(models.Product.objects.all()))
+        return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t})
+    else:
+
+        return render(request, 'product_list.html')
 class HomePageView(TemplateView):
     template_name="home.html"
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = models.Product
     template_name = 'product_new.html'
-    fields = ['title','body']
+    fields = ['name', 'price', 'description', 'image']
     login_url = 'login'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+    model = models.Product
+    fields = ['name', 'price', 'description', 'image']
+    template_name = 'product_edit.html'
+    login_url = 'login'
 
 def image_upload_view(request):
     if request.method == 'POST':

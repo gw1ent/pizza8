@@ -10,7 +10,6 @@ class Product(models.Model):
     weight = models.FloatField(default=0)
     cm = models.IntegerField(default=25)
     image = models.ImageField(upload_to='images', null=True)
-    index = models.IntegerField(verbose_name='Индекс', null=True)
 
     def __str__(self):
         return self.name

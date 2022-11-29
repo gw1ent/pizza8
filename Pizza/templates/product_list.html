@@ -9,7 +9,7 @@
                       <div class="carousel-inner" style="border-radius: 2px; height: 300px">
                             <div class="carousel-item active">
                                 {% for product in product_list %}
-                                {% if product.index == random_f %}
+                                {% if product.id == random_f %}
                                     <img src="{{ product.image.url }}" class="d-block w-100" style="height: 600px" alt="pizza" >
                                     <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,.4); position: absolute; top: 31%;">
                                         <h5>{{ product.name }}</h5>
@@ -20,7 +20,7 @@
                             </div>
                             <div class="carousel-item">
                                 {% for product in product_list %}
-                                {% if product.index == random_s %}
+                                {% if product.id == random_s %}
                                     <img src="{{ product.image.url }}" class="d-block w-100" style="height: 600px" alt="pizza">
                                     <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,.4); position: absolute; top: 31%;">
                                         <h5> {{ product.name }}</h5>
@@ -31,7 +31,7 @@
                             </div>
                             <div class="carousel-item">
                                 {% for product in product_list %}
-                                {% if product.index == random_t %}
+                                {% if product.id == random_t %}
                                     <img src="{{ product.image.url }}" class="d-block w-100" style="height: 600px" alt="pizza">
                                     <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,.4); position: absolute; top: 31%;">
                                         <h5>{{ product.name }}</h5>
@@ -76,6 +76,15 @@
                                                                                     border: 0px;
                                                                                     color: black;
                                                                                     width:auto;" >В корзину</button>
+                                <a href="{% url 'product_edit' product.pk %}" class="btn btn-primary ml-2" style="
+                                                                                    line-height: 27px;
+                                                                                    align-items: center;
+                                                                                    justify-content: center;
+                                                                                    border-radius: 25px;
+                                                                                    background-color: #ffc107;
+                                                                                    border: 0px;
+                                                                                    color: black;
+                                                                                    width:auto;" >Изменить</a>
                             </footer>
                         </div>
                     </div>
