@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %} PIZZA {% endblock %}
+{% block content %}
+<div class="container">
+    <section class="carousel">
+        <div class="container-fluid">
+            <!-- carousel -->
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride-ride="carousel" data-ride="carousel" data-pause="hover">
+                      <div class="carousel-inner" style="border-radius: 2px; height: 300px">
+                            <div class="carousel-item active">
+                                {% for product in product_list %}
+                                {% if product.index == random_f %}
+                                    <img src="{{ product.image.url }}" class="d-block w-100" style="height: 600px" alt="pizza" >
+                                    <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,.4); position: absolute; top: 31%;">
+                                        <h5>{{ product.name }}</h5>
+                                        <p>{{ product.description }}</p>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="carousel-item">
+                                {% for product in product_list %}
+                                {% if product.index == random_s %}
+                                    <img src="{{ product.image.url }}" class="d-block w-100" style="height: 600px" alt="pizza">
+                                    <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,.4); position: absolute; top: 31%;">
+                                        <h5> {{ product.name }}</h5>
+                                        <p>{{ product.description }}</p>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div class="carousel-item">
+                                {% for product in product_list %}
+                                {% if product.index == random_t %}
+                                    <img src="{{ product.image.url }}" class="d-block w-100" style="height: 600px" alt="pizza">
+                                    <div class="carousel-caption d-none d-md-block" style="background: rgba(0,0,0,.4); position: absolute; top: 31%;">
+                                        <h5>{{ product.name }}</h5>
+                                        <p>{{ product.description }}</p>
+                                    </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+
+                      </div>
+                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden"></span>
+                      </a>
+                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden"></span>
+                      </a>
+                </div>
+            <!-- carouselEND -->
+        </div>
+    </section>
+    <hr>
+    <section class="products">
+        <div class="container-fluid">
+            <div class="row" style="margin-left: 0px; margin-right: 0px;">
+                {% for product in product_list %}
+                <div class="col-md-4">
+                    <div class="card" style="width: 19rem; margin: 10px; height: 410px; border: 0px;">
+                        <img class="card-img-top" src="{{ product.image.url }}" style="height:180px">
+                        <div class="card-body" style="padding: 0px;">
+                            <h5 class="card-title" style="height: 24px; margin-top: 10px">{{ product.name }}</h5>
+                            <p class="card-text" style="height: 96px">{{ product.description }}</p>
+                            <footer class="row" style="display: flex; margin-right: 0px; margin-left: 0px; align-items: center; justify-content: center;">
+                                <div class="product-price" style="flex: 1 1 auto;">{{ product.price }} ₽</div>
+                                <button href="" class="btn btn-primary ml-2" style="
+                                                                                    line-height: 27px;
+                                                                                    align-items: center;
+                                                                                    justify-content: center;
+                                                                                    border-radius: 25px;
+                                                                                    background-color: #ffc107;
+                                                                                    border: 0px;
+                                                                                    color: black;
+                                                                                    width:auto;" >В корзину</button>
+                            </footer>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

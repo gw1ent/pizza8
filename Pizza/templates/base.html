@@ -7,44 +7,65 @@
       integrity="sha384Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-        <a class="navbar-brand" href="{% url 'home'%}">HOW'R'U</a>
-        <a href="{% url 'product_new' %}">Add new product</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                    {% if user.is_authenticated %}
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link dropdown-toggle" href="#" id="userMenu" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
-                            </li>
-                        </ul>
-
-                    {% else %}
-                        <form class="form-inline ml-auto">
-                            <a href = "{% url 'login' %}" class="btn btn-outline-secondary">Log in</a>
-                            <a href = "{% url 'signup' %}" class="btn btn-primary ml-2">Sign up</a>
-                        </form>
-                    {% endif %}
-            </div>
-    </nav>
-    <div class = 'container'>
+        <nav class="navbar navbar-expand-md navbar-warning bg-warning mb-4">
+            <div class="container">
+                <a class="navbar-brand text-dark" href="{% url 'product_list'%}">HOW'R'U</a>
+                <a class="text-dark" href="{% url 'product_new' %}">Add new product</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                            {% if user.is_authenticated %}
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item">
+                                        <a class="nav-link dropdown-toggle text-dark" href="#" id="userMenu" data-toggle="dropdown"
+                                           aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labeledby="userMenu">
+                                                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            {% else %}
+                                <form class="form-inline ml-auto">
+                                    <a href = "{% url 'login' %}" class="btn btn-outline-secondary">Log in</a>
+                                    <a href = "{% url 'signup' %}" class="btn btn-primary ml-2">Sign up</a>
+                                </form>
+                            {% endif %}
+                    </div>
+                </div>
+        </nav>
         {% block content %}
         {% endblock %}
-    </div>
-  <main>
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
+        <main>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous"></script>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-  </main>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        </main>
+        <footer class="bd-footer py-4 py-md-5 mt-5 bg-warning ">
+            <div class="container">
+                <div class="row justify-content-around">
+                    <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
+                        <h5 class="text-dark">HOW'R'U</h5>
+                        <a href="" class="text-dark">О нас</a>
+                    </div>
+                    <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
+                        <h5 class="text-dark">Партнёрам</h5>
+                        <a href="" class="text-dark">Поставщикам</a>
+                        <a href="" class="text-dark">Франшиза</a>
+                    </div>
+                    <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
+                        <h5 class="text-dark">Это интересно</h5>
+                        <a href="" class="text-dark">Информация</a>
+                        <a href="" class="text-dark">Данные</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
 </body>
 </html>
