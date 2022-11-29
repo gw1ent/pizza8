@@ -6,9 +6,9 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(null=True)
     price = models.IntegerField(default=0)
-    calories = models.FloatField(max_length=10000, default=0)
+    calories = models.FloatField(max_length=5, default=0)
     weight = models.FloatField(default=0)
-    cm = models.IntegerField(default=20)
+    cm = models.IntegerField(default=25)
     image = models.ImageField(upload_to='images', null=True)
     index = models.IntegerField(verbose_name='Индекс', null=True)
 

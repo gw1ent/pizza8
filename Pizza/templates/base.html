@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}PIZZA{% endblock title %}</title>
@@ -8,9 +9,10 @@
 </head>
 <body>
         <nav class="navbar navbar-expand-md navbar-warning bg-warning mb-4">
-            <div class="container">
+
+                <img src="{% static '/image/logo.png/' %}" class="d-block" style="height: 40px;">
                 <a class="navbar-brand text-dark" href="{% url 'product_list'%}">HOW'R'U</a>
-                <a class="text-dark" href="{% url 'product_new' %}">Add new product</a>
+
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -21,19 +23,42 @@
                                     <li class="nav-item">
                                         <a class="nav-link dropdown-toggle text-dark" href="#" id="userMenu" data-toggle="dropdown"
                                            aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labeledby="userMenu">
-                                                <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
-                                        </div>
+                                            <div class="dropdown-menu dropdown-menu-right" aria-labeledby="userMenu">
+                                                    <a class="dropdown-item" href="{% url 'product_new' %}">Add new product</a>
+                                                    <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                                            </div>
                                     </li>
                                 </ul>
                             {% else %}
-                                <form class="form-inline ml-auto">
-                                    <a href = "{% url 'login' %}" class="btn btn-outline-secondary">Log in</a>
-                                    <a href = "{% url 'signup' %}" class="btn btn-primary ml-2">Sign up</a>
-                                </form>
+                                    <!-- <div class="dropdown ml-auto">
+                                            <a class="nav-link dropdown-toggle text-dark" href="#" id="loginMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Login
+                                            </a>
+                                            <div class="dropdown-menu" style="left: -140px;">
+                                                <form class="px-4 py-3">
+                                                    <div class="form-group">
+                                                        <label for="exampleDropdownFormEmail1">Email address</label>
+                                                        <input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleDropdownFormPassword1">Password</label>
+                                                        <input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+                                                    </div>
+
+                                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                                </form>
+                                                <div class="dropdown-divider"></div>
+                                                    <a class="dropdown-item" href="{% url 'signup' %}">New around here? Sign up</a>
+                                                    <a class="dropdown-item" href="#">Forgot password?</a>
+                                            </div>
+                                        </div> -->
+                                     <form class="form-inline ml-auto">
+                                        <a href = "{% url 'login' %}" class="btn btn-outline-secondary">Log in</a>
+                                        <a href = "{% url 'signup' %}" class="btn btn-primary ml-2">Sign up</a>
+                                    </form>
                             {% endif %}
                     </div>
-                </div>
+
         </nav>
         {% block content %}
         {% endblock %}
@@ -47,7 +72,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         </main>
-        <footer class="bd-footer py-4 py-md-5 mt-5 bg-warning ">
+        <footer class="bd-footer py-4 py-md-5 mt-5 bg-warning" >
             <div class="container">
                 <div class="row justify-content-around">
                     <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
