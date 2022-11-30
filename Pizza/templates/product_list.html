@@ -85,6 +85,12 @@
                                                                                     border: 0px;
                                                                                     color: black;
                                                                                     width:auto;" >Изменить</a>
+                                <a href="{% url 'product_edit' product.pk %}" class="ml-2" style="color: red" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                                    </svg>
+                                </a>
                             </footer>
                         </div>
                     </div>
@@ -93,6 +99,6 @@
             </div>
         </div>
     </section>
-    <hr width="97%" color="#ffc107" size="">
+    <hr width="97%" color="#ffc107" size="5">
 </div>
 {% endblock content %}

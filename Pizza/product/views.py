@@ -6,6 +6,7 @@ from . import models
 from .forms import ImageForm
 from django.shortcuts import render
 import random
+from django.urls import reverse_lazy
 
 def ProductListView(request):
     products = models.Product.objects.all()
@@ -25,10 +26,7 @@ def ProductListView(request):
                 random_t = random.randint(1, len(models.Product.objects.all()))
         return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t})
     else:
-
         return render(request, 'product_list.html')
-class HomePageView(TemplateView):
-    template_name="home.html"
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = models.Product
@@ -40,11 +38,17 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+class OrderDeleteView(LoginRequiredMixin, DeleteView):
+    model = models.Product
+    success_url = reverse_lazy('product_list')
+    login_url = 'login'
+
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Product
     fields = ['name', 'price', 'description', 'image']
     template_name = 'product_edit.html'
     login_url = 'login'
+
 
 def image_upload_view(request):
     if request.method == 'POST':
