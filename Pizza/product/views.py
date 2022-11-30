@@ -10,23 +10,29 @@ from django.urls import reverse_lazy
 
 def ProductListView(request):
     products = models.Product.objects.all()
-    if len(products) != 0:
-        random_f = random.randint(1, len(models.Product.objects.all()))
-        random_s = random.randint(1, len(models.Product.objects.all()))
+    all_ids = []
+    errorCheck = 0
+    for product in products:
+        all_ids.append(product.pk)
+    if len(products) >= 3:
+        random_f = random.choice(all_ids)
+        random_s = random.choice(all_ids)
         while True:
             if random_s != random_f:
                 break
             else:
-                random_s = random.randint(1, len(models.Product.objects.all()))
-        random_t = random.randint(1, len(models.Product.objects.all()))
+                random_s = random.choice(all_ids)
+        random_t = random.choice(all_ids)
         while True:
             if random_t != random_f and random_t != random_s:
                 break
             else:
-                random_t = random.randint(1, len(models.Product.objects.all()))
-        return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t})
+                random_t = random.choice(all_ids)
+        return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t, 'errorCheck':errorCheck})
     else:
-        return render(request, 'product_list.html')
+        errorCheck = 1
+        return render(request, 'product_list.html', {'product_list':products, 'errorCheck':errorCheck})
+
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = models.Product
@@ -38,10 +44,11 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-class OrderDeleteView(LoginRequiredMixin, DeleteView):
-    model = models.Product
-    success_url = reverse_lazy('product_list')
-    login_url = 'login'
+def ProductDelete(request, pk):
+    product = models.Product.objects.get(id=pk)
+    product.delete()
+    return ProductListView(request)
+
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Product
