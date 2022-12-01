@@ -54,7 +54,7 @@
                 </div>
             {% endif %}
             {% if errorCheck == 1 %}
-                <h3 style="text-align: center">Error.</h3>
+                <h3 style="text-align: center">Ошибка. Недостаточно продуктов.</h3>
             {% endif %}
             <!-- carouselEND -->
         </div>
@@ -66,7 +66,30 @@
                 {% for product in product_list %}
                 <div class="col-md-4">
                     <div class="card" style="width: 19rem; margin: 10px; height: 410px; border: 0px;">
-                        <img class="card-img-top" src="{{ product.image.url }}" style="height:180px">
+                        <img class="card-img-top" data-toggle="modal" data-target="#ModalCenter{{product.pk}}" src="{{ product.image.url }}" style="height:180px">
+                        <!-- Всплывающее окно с товаром -->
+                        <div class="modal fade" id="ModalCenter{{product.pk}}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered"  role="document">
+                                   <div class="card float-right" style="border: 0px;">
+                                          <div class="row" padding>
+                                            <div class="col-sm-5">
+                                              <img class="d-block" style="width: 515px" src="{{ product.image.url }}" alt="">
+                                            </div>
+                                            <div class="col-sm-7" style="background-color: rgba(255, 255, 255, 0.2); backdrop-filter: blur(20px);">
+                                              <div class="card-block" style="margin-top: 25px;">
+                                                <h3 style="color: white" class="card-title"> {{product.name}} </h3>
+                                                <p style="color: white">{{product.description}}</p>
+                                                <p style="color: white">{{product.weight}} грамм &middot {{product.cm}} см</p>
+                                                <br>
+                                                  <!-- тут кнопку -->
+                                              </div>
+                                            </div>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                        </div>
+                        <!-- Конец окна с товаром -->
                         <div class="card-body" style="padding: 0px;" >
                             <h5 class="card-title" style="height: 24px; margin-top: 10px">{{ product.name }}</h5>
                             <p class="card-text" style="height: 96px">{{ product.description }}</p>
@@ -90,13 +113,14 @@
                                                                                     border: 0px;
                                                                                     color: black;
                                                                                     width:auto;" >Изменить</a>
-                                <a href="#" class="ml-2" data-toggle="modal" data-target="#exampleModalCenter" style="color: red">
+
+                                <a href="#" class="ml-2" data-toggle="modal" data-target="#exampleModalCenter{{product.pk}}" style="color: red">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                                         <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
                                     </svg>
                                 </a>
-                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="exampleModalCenter{{product.pk}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                   <div class="modal-header">
@@ -115,6 +139,7 @@
                                             </div>
                                       </div>
                                 </div>
+
                             </footer>
                         </div>
                     </div>
@@ -126,5 +151,3 @@
     <hr width="97%" color="#ffc107" size="5">
 </div>
 {% endblock content %}
-<!-- href="{% url 'product_delete' product.pk %}" <a href="{% url 'product_delete' product.pk %}">Да</a>
-                                        <a href="#" class="close">Нет</a> -->

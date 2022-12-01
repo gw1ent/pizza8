@@ -37,7 +37,7 @@ def ProductListView(request):
 class ProductCreateView(LoginRequiredMixin, CreateView):
     model = models.Product
     template_name = 'product_new.html'
-    fields = ['name', 'price', 'description', 'image']
+    fields = ['name', 'price', 'description', 'weight', 'cm', 'image']
     login_url = 'login'
 
     def form_valid(self, form):
@@ -52,7 +52,7 @@ def ProductDelete(request, pk):
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = models.Product
-    fields = ['name', 'price', 'description', 'image']
+    fields = ['name', 'price', 'description', 'weight', 'cm', 'image']
     template_name = 'product_edit.html'
     login_url = 'login'
 
