@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -7,6 +7,7 @@ from .forms import ImageForm
 from django.shortcuts import render
 import random
 from django.urls import reverse_lazy
+from .models import Product
 
 def ProductListView(request):
     products = models.Product.objects.all()

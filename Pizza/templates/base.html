@@ -32,16 +32,19 @@
                                     </li>
                                 </ul>
                             {% else %}
+
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link dropdown-toggle text-dark" href="#" id="loginMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Аккаунт</a>
-                                            <div class="dropdown-menu dropdown" aria-labelledby="loginMenu">
-                                                <div class="container btn-group" style="width=50%; display: grid">
-                                                    <a href = "{% url 'login' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Войти</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a href = "{% url 'signup' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Зарегистрироваться</a>
-                                                </div>
-                                            </div>
+                                        <div class="dropdown">
+                                          <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                              Аккаунт
+                                          </a>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenu" style="width=50%; display: grid">
+                                              <a href = "{% url 'login' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Войти</a>
+                                              <div class="dropdown-divider"></div>
+                                              <a href = "{% url 'signup' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Зарегистрироваться</a>
+                                          </div>
+                                        </div>
                                     </li>
                                 </ul>
                     </div>
