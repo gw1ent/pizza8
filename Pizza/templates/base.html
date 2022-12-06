@@ -25,8 +25,8 @@
                                               {{ user }}
                                           </a>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{% url 'product_new' %}">Add new product</a>
-                                            <a class="dropdown-item" href="{% url 'logout' %}">Log out</a>
+                                            <a class="dropdown-item" href="{% url 'product_new' %}">Добавить новый продукт</a>
+                                            <a class="dropdown-item" href="{% url 'logout' %}">Выйти</a>
                                           </div>
                                         </div>
                                     </li>
@@ -39,10 +39,9 @@
                                           <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               Аккаунт
                                           </a>
-                                          <div class="dropdown-menu" aria-labelledby="dropdownMenu" style="width=50%; display: grid">
-                                              <a href = "{% url 'login' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Войти</a>
-                                              <div class="dropdown-divider"></div>
-                                              <a href = "{% url 'signup' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Зарегистрироваться</a>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenu">
+                                              <a class="dropdown-item" href = "{% url 'login' %}">Войти</a>
+                                              <a class="dropdown-item" href = "{% url 'signup' %}">Зарегистрироваться</a>
                                           </div>
                                         </div>
                                     </li>

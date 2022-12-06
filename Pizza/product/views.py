@@ -8,10 +8,12 @@ from django.shortcuts import render
 import random
 from django.urls import reverse_lazy
 from .models import Product
+from cart.forms import CartAddProductForm
 
 def ProductListView(request):
     products = models.Product.objects.all()
     all_ids = []
+    cart_product_form = CartAddProductForm()
     errorCheck = 0
     for product in products:
         all_ids.append(product.pk)
@@ -29,10 +31,10 @@ def ProductListView(request):
                 break
             else:
                 random_t = random.choice(all_ids)
-        return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t, 'errorCheck':errorCheck})
+        return render(request, 'product_list.html', {'product_list':products, 'random_f':random_f, 'random_s':random_s, 'random_t':random_t, 'errorCheck':errorCheck, 'cart_product_form': cart_product_form})
     else:
         errorCheck = 1
-        return render(request, 'product_list.html', {'product_list':products, 'errorCheck':errorCheck})
+        return render(request, 'product_list.html', {'product_list':products, 'errorCheck':errorCheck, 'cart_product_form': cart_product_form})
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):

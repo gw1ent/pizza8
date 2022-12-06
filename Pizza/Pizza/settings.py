@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'users',
     'crispy_forms',
     'phone_field',
-    'product_cart',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +144,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
+CART_SESSION_ID = 'cart'
