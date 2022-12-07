@@ -1,45 +1,53 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}
-    Your shopping cart
+    Ваши пиццы
 {% endblock %}
 {% block content %}
-    <div class="container">
-    <h1>Your shopping cart</h1>
-    <table class="cart">
+    <div class="container" style="padding-right: 20px; padding-left: 30px;">
+        <h1>Ваши пиццы</h1>
+        <table class="cart">
+            <div class="container" style="padding-right: -20px; padding-left: -30px;">
+                        <div class="row">
+                            <div class="col-md-2">Пицца</div>
+                            <div class="col-md-2">Цена</div>
+                            <div class="col-md-2">Кол-во</div>
+                            <div class="col-md-2">Стоимость</div>
+                            <div class="col-md-2"></div>
+                        </div>
+            </div>
+            <tbody>
+            <hr width="100%" color="#ffc107" size="5">
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <div class="container" style="padding-right: -20px; padding-left: -30px;">
+                        <div class="row">
+                            <div class="col-md-2"><h5>{{ product.name }}</h5></div>
+                            <div class="col-md-2"><h5>{{ item.price }}</h5></div>
+                            <div class="col-md-2"><h5>{{ item.quantity }}</h5></div>
+                            <div class="col-md-2"><h5>{{ item.total_price }}</h5></div>
+                            <div class="col-md-2"></div>
+                            <div class="col-md-2">
+                                <a href="{% url 'cart:cart_remove' product.id %}" style="color: red">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+                                        <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <hr width="100%" color="#ffc107">
+                {% endwith %}
+            {% endfor %}
 
-        <tbody>
-        {% for item in cart %}
-            {% with product = item.product %}
-                <tr>
-                    <td>
-                        <a href="{{ product.get_absolute_url }}">
-                            <img style="height: 70px; width: 85px;" src="
-                                {% if product.image %}
-                                    {{ product.image.url }}
-                                {% else %}
-                                    {% static 'img/no_image.png' %}
-                                {% endif %}">
-                        </a>
-                    </td>
-                    <td>{{ product.name }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td><a href="{% url 'cart:cart_remove' product.id %}">Remove</a></td>
-                    <td class="num">{{ item.price }}</td>
-                    <td class="num">{{ item.total_price }}</td>
-                </tr>
-            {% endwith %}
-        {% endfor %}
-        <tr class="total">
-            <td>Total</td>
-            <td colspan="4"></td>
-            <td class="num">{{ cart.get_total_price }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <p class="text-right">
-        <a href="{% url 'shop:product_list' %}" class="button light">Continue shopping</a>
-        <a href="#" class="button">Checkout</a>
-    </p>
+            </tbody>
+        </table>
+        <p class="text-right">
+            <h5>Сумма к оплате: {{ cart.get_total_price }}</h5>
+            <a href="{% url 'shop:product_list' %}" class="text-dark">Выбрать ещё пиццу</a>
+            &middot
+            <a href="#" class="text-dark">Оплатить</a>
+        </p>
     </div>
 {% endblock %}
