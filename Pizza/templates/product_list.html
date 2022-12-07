@@ -79,15 +79,20 @@
                                     <br>
                                     <div class="container-fluid">
                                         <div class="row" style="align-items: center;">
-                                            <button href="" method="post" class="btn btn-primary" style="padding-right: 15px;
-                                                                                           line-height: 27px;
-                                                                                           align-items: center;
+                                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                                <label></label>
+                                                {{ cart_product_form.quantity }}
+                                                {% csrf_token %}
+                                                <button type="submit" class="btn btn-primary" style="padding-right: 15px;
+                                                                                            line-height: 27px;
+                                                                                            align-items: center;
                                                                                             justify-content: center;
                                                                                             border-radius: 17px;
                                                                                             background-color: hsla(45, 100%, 51%, 0.7);
                                                                                             border: 0px;
                                                                                             color: black;
                                                                                             width:auto;" >В корзину</button>
+                                            </form>
                                             <a href="#" class="btn btn-primary ml-2" data-toggle="modal" data-target="#adminPanel{{product.pk}}" style="
                                                                                                                         line-height: 27px;
                                                                                                                         align-items: center;
@@ -96,13 +101,7 @@
                                                                                                                         background-color: hsla(45, 100%, 51%, 0.7);
                                                                                                                         border: 0px;
                                                                                                                         color: black;
-                                                                                                                        width:auto;" >Панель админа</a>
-
-                                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                                                {{ cart_product_form }}
-                                                {% csrf_token %}
-                                                <input type="submit" value="Add to cart">
-                                            </form>
+                                                                                                                        width:auto;" >Панель</a>
                                         </div>
                                     </div>
                                 </div>
@@ -148,6 +147,8 @@
                                                             </div>
                                                       </div>
                                             </div>
+                            <!-- конец вспл. окна -->
+                            <!-- всплывающее окно с панелью менеджера -->
                             <div class="modal fade" id="exampleModalCenter{{product.pk}}" tabindex="0" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -177,7 +178,7 @@
                                             </div>
                                       </div>
                             </div>
-                                <!-- конец вспл. окна -->
+                            <!-- конец вспл. окна -->
                         </div>
                     </div>
                     <!-- КОНЕЦ КАРТОЧКИ ТОВАРА -->
