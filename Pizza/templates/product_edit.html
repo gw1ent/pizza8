@@ -7,9 +7,10 @@
 <body>
   {% extends 'base.html' %}
   {% load crispy_forms_tags %}
-
   {% block content %}
+  {% if "product.add_product" in user.get_user_permissions %}
   <div class="container">
+    <div style="padding-left: 15px;">
       <h1>Изменить данные о продукте</h1>
             <div style="display:inline-block;">
                 <form method="post" enctype="multipart/form-data">
@@ -24,7 +25,13 @@
                     <img src="{{ img_obj.image.url }}" alt="connect" style="max-height:300px">
                 {% endif %}
             </div>
+    </div>
   </div>
+  {% else %}
+    <div class="container">
+        <h5 style="display: grid; place-items: center;">Ошибка. У вас нет прав.</h5>
+    </div>
+  {% endif %}
   {% endblock %}
 </body>
 </html>

@@ -23,9 +23,9 @@
                     <div class="container" style="padding-right: -20px; padding-left: -30px;">
                         <div class="row">
                             <div class="col-md-2"><h5>{{ product.name }}</h5></div>
-                            <div class="col-md-2"><h5>{{ item.price }}</h5></div>
-                            <div class="col-md-2"><h5>{{ item.quantity }}</h5></div>
-                            <div class="col-md-2"><h5>{{ item.total_price }}</h5></div>
+                            <div class="col-md-2"><h5>{{ item.price }}₽</h5></div>
+                            <div class="col-md-2"><h5><a href="{% url 'cart:cart_minus_product' product.id %}" class="btn">-</a> {{ item.quantity }} <a href="{% url 'cart:cart_plus_product' product.id %}" class="btn">+</a></h5></div>
+                            <div class="col-md-2"><h5>{{ item.total_price }}₽</h5></div>
                             <div class="col-md-2"></div>
                             <div class="col-md-2">
                                 <a href="{% url 'cart:cart_remove' product.id %}" style="color: red">
@@ -44,10 +44,10 @@
             </tbody>
         </table>
         <p class="text-right">
-            <h5>Сумма к оплате: {{ cart.get_total_price }}</h5>
+            <h5>Сумма к оплате: {{ cart.get_total_price }}₽</h5>
             <a href="{% url 'shop:product_list' %}" class="text-dark">Выбрать ещё пиццу</a>
             &middot
-            <a href="#" class="text-dark">Оплатить</a>
+            <a href="{% url 'orders:order_create' %}" class="text-dark">Оплатить</a>
         </p>
     </div>
 {% endblock %}

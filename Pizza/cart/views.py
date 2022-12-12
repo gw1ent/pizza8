@@ -14,9 +14,9 @@ def cart_add(request, product_id):
     if form.is_valid():
         print('VALID')
         cd = form.cleaned_data
-        cart.add(product=product,
-                 quantity=cd['quantity'],
-                 update_quantity=cd['update'])
+        cart.add(product = product,
+                 quantity = 1,
+                 update_quantity = cd['update'])
     return redirect('cart:cart_detail')
 
 def cart_remove(request, product_id):
@@ -28,3 +28,17 @@ def cart_remove(request, product_id):
 def cart_detail(request):
     cart = Cart(request)
     return render(request, 'cart/detail.html', {'cart': cart})
+
+
+def cart_plus_product(request, id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=id)
+    cart.product_plus(product)
+    return redirect('cart:cart_detail')
+
+
+def cart_minus_product(request, id):
+    cart = Cart(request)
+    product = get_object_or_404(Product, id=id)
+    cart.product_minus(product)
+    return redirect('cart:cart_detail')

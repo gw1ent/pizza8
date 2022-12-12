@@ -10,7 +10,7 @@
 <body style="height: 100%">
         <nav class="navbar navbar-expand-md navbar-warning bg-warning mb-4">
             <div class="container" style="padding-right: 20px; padding-left: 30px;">
-                <img src="{% static '/image/logo.png/' %}" class="d-block" style="height: 40px;">
+
                 <a class="navbar-brand text-dark" href="{% url 'product_list'%}">HOW'R'U</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,7 +25,10 @@
                                               {{ user }}
                                           </a>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="{% url 'product_new' %}">Добавить новый продукт</a>
+                                            {% if "product.add_product" in user.get_user_permissions %}
+                                                <a class="dropdown-item" href="{% url 'product_new' %}">Добавить новый продукт</a>
+                                            {% endif %}
+                                            <a class="dropdown-item" href="{% url 'cart:cart_detail' %}">Корзина</a>
                                             <a class="dropdown-item" href="{% url 'logout' %}">Выйти</a>
                                           </div>
                                         </div>
@@ -67,17 +70,11 @@
             <div class="container">
                 <div class="row justify-content-around">
                     <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
+                    </div>
+                    <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
                         <h5 class="text-dark">HOW'R'U</h5>
-                        <a href="" class="text-dark">О нас</a>
                     </div>
                     <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
-                        <h5 class="text-dark">Партнёрам</h5>
-                        <a href="" class="text-dark">Поставщикам</a>
-                        <a href="" class="text-dark">Франшиза</a>
-                    </div>
-                    <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
-                        <h5 class="text-dark">Это интересно</h5>
-                        <a href="" class="text-dark">Информация</a>
                     </div>
                 </div>
             </div>
