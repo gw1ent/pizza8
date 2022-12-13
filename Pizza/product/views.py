@@ -47,10 +47,11 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-def ProductDelete(request, pk):
-    product = models.Product.objects.get(id=pk)
-    product.delete()
-    return ProductListView(request)
+class ProductDelete(DeleteView):
+    model = Product
+    template_name = 'product_delete.html'
+    success_url = reverse_lazy('product_list')
+
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):

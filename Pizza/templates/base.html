@@ -11,7 +11,7 @@
         <nav class="navbar navbar-expand-md navbar-warning bg-warning mb-4">
             <div class="container" style="padding-right: 20px; padding-left: 30px;">
 
-                <a class="navbar-brand text-dark" href="{% url 'product_list'%}">HOW'R'U</a>
+                <a class="navbar-brand" style="color: black" href="{% url 'product_list'%}">HOW'R'U</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">
                                         <div class="dropdown">
-                                          <a class="nav-link dropdown-toggle text-dark" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          <a class="nav-link dropdown-toggle" style="color: black" href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                               {{ user }}
                                           </a>
                                           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -66,18 +66,20 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
         </main>
-        <footer class="bd-footer py-4 py-md-5 mt-5 bg-warning">
+
+        <footer class="py-4 py-md-5 mt-5 bg-warning">
             <div class="container">
                 <div class="row justify-content-around">
                     <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
                     </div>
                     <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
-                        <h5 class="text-dark">HOW'R'U</h5>
+                        <h5 style="color: black">HOW'R'U</h5>
                     </div>
                     <div class="col-6 col-lg-2 offset-lg-1 mb-3 text-muted">
                     </div>
                 </div>
             </div>
         </footer>
+
 </body>
 </html>

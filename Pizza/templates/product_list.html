@@ -88,7 +88,7 @@
                                                                                             align-items: center;
                                                                                             justify-content: center;
                                                                                             border-radius: 17px;
-                                                                                            background-color: hsla(45, 100%, 51%, 0.7);
+                                                                                            background-color: #ffc107;
                                                                                             border: 0px;
                                                                                             color: black;
                                                                                             width:auto;" >В корзину</button>
@@ -99,7 +99,7 @@
                                                                                                                         align-items: center;
                                                                                                                         justify-content: center;
                                                                                                                         border-radius: 17px;
-                                                                                                                        background-color: hsla(45, 100%, 51%, 0.7);
+                                                                                                                        background-color: #ffc107;
                                                                                                                         border: 0px;
                                                                                                                         color: black;
                                                                                                                         width:auto;" >Редактировать</a>
@@ -131,7 +131,7 @@
                                                                                                                                         border: 0px;
                                                                                                                                         color: black;
                                                                                                                                         width:auto;" >Изменить</a>
-                                            <a href="#" class="btn btn-primary ml-2" data-toggle="modal" data-target="#exampleModalCenter{{product.pk}}" style="
+                                            <a href="{% url 'product_delete' product.pk %}" class="btn btn-primary ml-2" style="
                                                                                                                                         line-height: 27px;
                                                                                                                                         align-items: center;
                                                                                                                                         justify-content: center;
@@ -148,37 +148,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- конец вспл. окна -->
-                            <!-- всплывающее окно с подтверждением удаления -->
-                            <div class="modal fade" id="exampleModalCenter{{product.pk}}" tabindex="0" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                      <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                  <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLongTitle">Удаление объекта</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                  </div>
-                                                  <div class="modal-body">
-                                                        Вы уверены, что хотите удалить объект?
-                                                  </div>
-                                                <script>
-                                                    function httpGet{{product.pk}}()
-                                                    {
-                                                        var xmlHttp = new XMLHttpRequest();
-                                                        xmlHttp.open( "GET", "{% url 'product_delete' product.pk %}", false ); // false for synchronous request
-                                                        xmlHttp.send( null );
-                                                        location.reload();
-                                                        return xmlHttp.responseText;
-                                                    }
-                                                </script>
-                                                  <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
-                                                        <button type="submit" onclick="httpGet{{product.pk}}()" class="btn btn-primary">Да</button>
-                                                  </div>
-                                            </div>
-                                      </div>
                             </div>
                             <!-- конец вспл. окна -->
                         </div>
