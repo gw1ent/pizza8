@@ -1,8 +1,22 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Thank you{% endblock %}
+{% block title %}Checkout{% endblock %}
 
 {% block content %}
+<div class="container" >
+<div style="padding-left: 15px;">
+    <h2>Ваши заказы</h2>
+    <hr style="background-color: #ffc107">
+    {% for order in orderitems %}
+        {{order.created}}
+        {% for orderitem in order %}
+         {{ orderitem.product }}:
+        {{ orderitem.quantity }}шт
 
-
+            <br>
+        {% endfor %}
+    <hr style="background-color: #ffc107">
+    {% endfor %}
+ </div>
+</div>
 {% endblock %}

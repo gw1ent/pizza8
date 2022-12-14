@@ -6,3 +6,8 @@ class OrderCreateForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = []
+
+class OrderDetailForm(forms.ModelForm):
+    class Meta:
+        model = Order
+        fields = []

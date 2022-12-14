@@ -12,7 +12,6 @@ def cart_add(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     form = CartAddProductForm(request.POST)
     if form.is_valid():
-        print('VALID')
         cd = form.cleaned_data
         cart.add(product = product,
                  quantity = 1,

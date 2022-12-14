@@ -5,6 +5,9 @@
 {% endblock %}
 {% block content %}
     <div class="container" style="padding-right: 20px; padding-left: 30px;">
+        {% if cart.get_total_price == 0 %}
+            <h1>Ваша корзина пуста.</h1>
+        {% else %}
         <h1>Ваши пиццы</h1>
         <table class="cart">
             <div class="container" style="padding-right: -20px; padding-left: -30px;">
@@ -49,5 +52,6 @@
             &middot
             <a href="{% url 'orders:order_create' %}" class="text-dark">Оплатить</a>
         </p>
+        {% endif %}
     </div>
 {% endblock %}
