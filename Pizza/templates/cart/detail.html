@@ -48,9 +48,25 @@
         </table>
         <p class="text-right">
             <h5>Сумма к оплате: {{ cart.get_total_price }}₽</h5>
-            <a href="{% url 'shop:product_list' %}" class="text-dark">Выбрать ещё пиццу</a>
+            <a href="{% url 'shop:product_list' %}" class="btn" style="
+                                                                       line-height: 27px;
+                                                                       align-items: center;
+                                                                       justify-content: center;
+                                                                       border-radius: 17px;
+                                                                       background-color: #ffc107;
+                                                                       border: 0px;
+                                                                       color: black;
+                                                                       width:auto;">Выбрать ещё пиццу</a>
             &middot
-            <a href="{% url 'orders:order_create' %}" class="text-dark">Оплатить</a>
+            <a href="{% url 'orders:order_create' %}" class="btn" style="
+                                                                       line-height: 27px;
+                                                                       align-items: center;
+                                                                       justify-content: center;
+                                                                       border-radius: 17px;
+                                                                       background-color: #ffc107;
+                                                                       border: 0px;
+                                                                       color: black;
+                                                                       width:auto;">Оплатить</a>
         </p>
         {% endif %}
     </div>
